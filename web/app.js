@@ -1,0 +1,6 @@
+const app=document.getElementById('app'),water=document.getElementById('water'),cap=document.getElementById('capacity'),hp=document.getElementById('hpBar'),hpText=document.getElementById('hpText'),grid=document.getElementById('itemGrid');
+let tankId=null;
+function renderItems(items){grid.innerHTML='';(items||[]).forEach(i=>{const d=document.createElement('div');d.className='item';d.innerHTML=`<strong>${i.label}</strong><small>${i.amountText||''}</small>`;d.onclick=()=>fetch(`https://${GetParentResourceName()}/itemAction`,{method:'POST',body:JSON.stringify({tankId,item:i.name,mode:i.mode})});grid.appendChild(d);});}
+window.addEventListener('message',e=>{const d=e.data;if(d.action==='open'){tankId=d.tankId;app.classList.remove('hidden');const pct=Math.max(0,Math.min(100,(d.amount/d.capacity)*100));water.style.height=`${pct}%`;cap.textContent=`${d.amount.toFixed(1)}L / ${d.capacity.toFixed(1)}L`;hp.style.width=`${d.healthPct}%`;hpText.textContent=`${Math.floor(d.healthPct)}%`;renderItems(d.items);} if(d.action==='close'){app.classList.add('hidden');tankId=null;}});
+document.getElementById('close').onclick=()=>fetch(`https://${GetParentResourceName()}/close`,{method:'POST',body:'{}'});
+document.getElementById('dismantle').onclick=()=>fetch(`https://${GetParentResourceName()}/dismantle`,{method:'POST',body:JSON.stringify({tankId})});

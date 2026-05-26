@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="hidden">
+    <div class="panel">
+      <div class="tank-visual">
+        <div class="water" id="water"></div>
+        <div class="capacity" id="capacity">0.0L / 0.0L</div>
+      </div>
+      <div class="content">
+        <div class="header"><span>TANK SYSTEM</span><button id="close">✕</button></div>
+        <div class="section">
+          <label>DURABILITY</label>
+          <div class="bar"><div id="hpBar"></div></div>
+          <div class="hptext" id="hpText">100%</div>
+        </div>
+        <div class="items">
+          <h4>RELEVANT ITEMS</h4>
+          <div id="itemGrid"></div>
+        </div>
+        <div class="actions">
+          <button id="dismantle">DISMANTLE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
