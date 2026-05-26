@@ -1,0 +1,22 @@
+['boiler_tank'] = {label = 'Boiler Tank', weight = 5000, stack = false, close = true, description = 'Placeable small liquid tank'},
+['storage_tank'] = {label = 'Storage Tank', weight = 14000, stack = false, close = true, description = 'Placeable large liquid tank'},
+
+['bottle_empty'] = {label = 'Empty Bottle', weight = 100, stack = true, close = false},
+['jug_empty'] = {label = 'Empty Jug', weight = 250, stack = true, close = false},
+['bucket_empty'] = {label = 'Empty Bucket', weight = 500, stack = true, close = false},
+
+['bottle_water'] = {label = 'Bottle Water', weight = 200, stack = true, close = false},
+['jug_water'] = {label = 'Jug Water', weight = 500, stack = true, close = false},
+['bucket_water'] = {label = 'Bucket Water', weight = 1000, stack = true, close = false},
+
+['bottle_fuel'] = {label = 'Bottle Fuel', weight = 250, stack = true, close = false},
+['jug_fuel'] = {label = 'Jug Fuel', weight = 550, stack = true, close = false},
+['bucket_fuel'] = {label = 'Bucket Fuel', weight = 1100, stack = true, close = false},
+
+['steel'] = {label = 'Steel', weight = 500, stack = true, close = false},
+
+['dirty_waterbottle'] = {label = 'Dirty Water Bottle', weight = 220, stack = true, close = false},
+['jug_dirtywater'] = {label = 'Jug Dirty Water', weight = 520, stack = true, close = false},
+
+['coal'] = {label = 'Coal', weight = 300, stack = true, close = false},
+['charcoal'] = {label = 'Charcoal', weight = 250, stack = true, close = false},
