@@ -140,14 +140,28 @@ RegisterNetEvent('liquid_stations:server:collectFromSource', function(sourceId)
     local dist = #(p - sourceCfg.coords)
     if dist > (sourceCfg.radius + 2.0) then return end
 
-    local rule = (Config.FillItems.water or {}).bottle_empty
+    local rule = (Config.FillItems.dirty_water or {}).empty_waterbottle
     if not rule then return end
-    local has = exports.ox_inventory:GetItem(src, 'bottle_empty', nil, true) or 0
+    local has = exports.ox_inventory:GetItem(src, 'empty_waterbottle', nil, true) or 0
     if has < (rule.remove or 1) then return end
 
-    exports.ox_inventory:RemoveItem(src, 'bottle_empty', rule.remove or 1)
-    exports.ox_inventory:AddItem(src, rule.give or 'bottle_water', 1)
+    exports.ox_inventory:RemoveItem(src, 'empty_waterbottle', rule.remove or 1)
+    exports.ox_inventory:AddItem(src, rule.give or 'dirty_waterbottle', 1)
     TriggerClientEvent('ox_lib:notify', src, {title='Water Source', description='Collected water bottle', type='success'})
+end)
+
+
+RegisterNetEvent('liquid_stations:server:boilTankWater', function(id)
+    local src = source
+    local t = Tanks[id]; if not t then return end
+    if t.liquidType ~= 'dirty_water' then return end
+    local xPlayer = ESX.GetPlayerFromId(src); if not xPlayer then return end
+
+    t.liquidType = 'water'
+    t.updatedAt = nowUnix()
+    persistTank(t)
+    broadcast()
+    TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = 'Water boiled: now clean water', type = 'success' })
 end)
 
 CreateThread(function()

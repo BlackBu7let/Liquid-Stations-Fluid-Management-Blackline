@@ -34,3 +34,10 @@ Copy images from `_INSTALL/images/` into your inventory image folder.
 - Added GTA5 map water-source zones (beach/lake/river examples).
 - Use **empty bottle** at source via ox_target: `Collect Water (Empty Bottle)`.
 - Event converts `bottle_empty` -> `bottle_water`.
+
+
+## Dirty -> Clean water gameplay
+- Collecting at map water source now uses `empty_waterbottle` and gives `dirty_waterbottle`.
+- You can also fill `jug_empty` with dirty water in tanks (to `jug_dirtywater`).
+- Use tank UI button **BOIL TO CLEAN WATER** to convert tank liquid type from `dirty_water` to `water`.
+- After boiling, fill outputs become clean: `bottle_water` / `jug_water`.

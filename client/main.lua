@@ -32,7 +32,7 @@ local function openTankUI(id)
     SetNuiFocus(true, true)
     SendNUIMessage({
         action='open', tankId=id, amount=tank.amount or 0.0, capacity=cfg.capacity or 1.0,
-        healthPct=((tank.health or 0) / (cfg.maxHealth or 100))*100, items=getRelevantItems(tank.liquidType)
+        healthPct=((tank.health or 0) / (cfg.maxHealth or 100))*100, liquidType=tank.liquidType, items=getRelevantItems(tank.liquidType)
     })
 end
 
@@ -41,6 +41,15 @@ RegisterNUICallback('dismantle', function(data, cb)
     if data and data.tankId then TriggerServerEvent('liquid_stations:server:dismantleTank', data.tankId) end
     closeUi(); cb({ok=true})
 end)
+RegisterNUICallback('boil', function(data, cb)
+    if data and data.tankId then
+        if lib.progressCircle({duration = Config.BoilDurationMs or 8000, label='Boiling dirty water...'}) then
+            TriggerServerEvent('liquid_stations:server:boilTankWater', data.tankId)
+        end
+    end
+    cb({ok=true})
+end)
+
 RegisterNUICallback('itemAction', function(data, cb)
     if data and data.tankId and data.item and data.mode then
         TriggerServerEvent('liquid_stations:server:itemAction', data.tankId, data.item, data.mode)

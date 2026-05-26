@@ -15,3 +15,6 @@
 ['bucket_fuel'] = {label = 'Bucket Fuel', weight = 1100, stack = true, close = false},
 
 ['steel'] = {label = 'Steel', weight = 500, stack = true, close = false},
+
+['dirty_waterbottle'] = {label = 'Dirty Water Bottle', weight = 220, stack = true, close = false},
+['jug_dirtywater'] = {label = 'Jug Dirty Water', weight = 520, stack = true, close = false},
