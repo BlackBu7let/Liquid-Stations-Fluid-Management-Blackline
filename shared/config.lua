@@ -9,6 +9,7 @@ Config.PROGRESS_INSTALL = 5000
 Config.ENABLE_DUI = true
 Config.BoilDurationMs = 8000
 Config.BurnRatePerLiter = 0.05 -- fuel items per liter (rounded up), e.g. 20L => 1 item
+Config.DrainPerAction = 5.0
 
 Config.BurnableItems = {
     coal = { remove = 1 },

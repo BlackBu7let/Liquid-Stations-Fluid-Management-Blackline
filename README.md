@@ -59,3 +59,10 @@ Copy images from `_INSTALL/images/` into your inventory image folder.
 - Added `Config.BurnRatePerLiter` to scale boil fuel cost with tank liters.
 - Formula: `requiredFuel = ceil(currentLiters * BurnRatePerLiter)` (minimum 1).
 - Example with default `0.05`: 20L requires 1 fuel item, 100L requires 5.
+
+
+## Drag & Drop + Drain + No Mix
+- UI now supports drag-and-drop tiles into a drop zone (click still works).
+- Boiling auto-consumes configured burn materials from ox_inventory (no manual fuel slot needed).
+- Liquids cannot be mixed because tank actions are resolved only against the current tank liquid type mappings.
+- Added drain button for boiler and storage to remove `Config.DrainPerAction` liters per action.

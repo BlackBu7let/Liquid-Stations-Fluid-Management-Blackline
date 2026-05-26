@@ -1,11 +1,15 @@
 <!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='style.css'></head><body>
 <div id='app' class='hidden'>
   <div id='boilerUI' class='panel hidden'>
-    <h2>BOILER UNIT</h2><div id='boilerLiquid'></div><div class='bar'><div id='boilerHp'></div></div><div id='boilerCap'></div><div id='boilerItems'></div>
-    <button id='boil'>BOIL DIRTY WATER</button><button id='closeBoiler'>CLOSE</button>
+    <h2>BOILER UNIT</h2><div id='boilerLiquid'></div><div class='bar'><div id='boilerHp'></div></div><div id='boilerCap'></div>
+    <div class='hint'>Drag item tile into tank area (auto input from ox_inventory). No liquid mixing.</div>
+    <div id='boilerDrop' class='dropzone'>DROP HERE</div><div id='boilerItems'></div>
+    <button id='boil'>BOIL DIRTY WATER (auto uses coal/charcoal)</button><button id='drainBoiler'>DRAIN</button><button id='closeBoiler'>CLOSE</button>
   </div>
   <div id='storageUI' class='panel hidden'>
-    <h2>STORAGE TANK</h2><div id='storageLiquid'></div><div class='bar'><div id='storageHp'></div></div><div id='storageCap'></div><div id='storageItems'></div>
-    <button id='closeStorage'>CLOSE</button>
+    <h2>STORAGE TANK</h2><div id='storageLiquid'></div><div class='bar'><div id='storageHp'></div></div><div id='storageCap'></div>
+    <div class='hint'>Drag item tile into tank area. No liquid mixing.</div>
+    <div id='storageDrop' class='dropzone'>DROP HERE</div><div id='storageItems'></div>
+    <button id='drainStorage'>DRAIN</button><button id='closeStorage'>CLOSE</button>
   </div>
 </div><script src='app.js'></script></body></html>
