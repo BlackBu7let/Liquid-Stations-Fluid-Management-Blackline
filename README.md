@@ -41,3 +41,9 @@ Copy images from `_INSTALL/images/` into your inventory image folder.
 - You can also fill `jug_empty` with dirty water in tanks (to `jug_dirtywater`).
 - Use tank UI button **BOIL TO CLEAN WATER** to convert tank liquid type from `dirty_water` to `water`.
 - After boiling, fill outputs become clean: `bottle_water` / `jug_water`.
+
+
+## Boiler + Storage split
+- Added **2 different props/configs**: `boiler_tank` and `storage_tank`.
+- Added **2 different UIs** in NUI: Boiler UI (with boil button) and Storage UI (no boil).
+- Place with `/placeliquidstation [boiler_tank|storage_tank]`.

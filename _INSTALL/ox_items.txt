@@ -1,6 +1,5 @@
-['small_water_tank'] = {label = 'Small Water Tank', weight = 5000, stack = false, close = true, description = 'Placeable small liquid tank'},
-['medium_water_tank'] = {label = 'Medium Water Tank', weight = 9000, stack = false, close = true, description = 'Placeable medium liquid tank'},
-['large_water_tank'] = {label = 'Large Water Tank', weight = 14000, stack = false, close = true, description = 'Placeable large liquid tank'},
+['boiler_tank'] = {label = 'Boiler Tank', weight = 5000, stack = false, close = true, description = 'Placeable small liquid tank'},
+['storage_tank'] = {label = 'Storage Tank', weight = 14000, stack = false, close = true, description = 'Placeable large liquid tank'},
 
 ['bottle_empty'] = {label = 'Empty Bottle', weight = 100, stack = true, close = false},
 ['jug_empty'] = {label = 'Empty Jug', weight = 250, stack = true, close = false},

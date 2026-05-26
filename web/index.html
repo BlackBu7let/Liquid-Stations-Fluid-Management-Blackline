@@ -1,36 +1,11 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="app" class="hidden">
-    <div class="panel">
-      <div class="tank-visual">
-        <div class="water" id="water"></div>
-        <div class="capacity" id="capacity">0.0L / 0.0L</div>
-      </div>
-      <div class="content">
-        <div class="header"><span>TANK SYSTEM</span><button id="close">✕</button></div>
-        <div class="liquidtype" id="liquidType">DIRTY WATER</div>
-        <div class="section">
-          <label>DURABILITY</label>
-          <div class="bar"><div id="hpBar"></div></div>
-          <div class="hptext" id="hpText">100%</div>
-        </div>
-        <div class="items">
-          <h4>RELEVANT ITEMS</h4>
-          <div id="itemGrid"></div>
-        </div>
-        <div class="actions">
-          <button id="boil">BOIL TO CLEAN WATER</button>
-          <button id="dismantle">DISMANTLE</button>
-        </div>
-      </div>
-    </div>
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='style.css'></head><body>
+<div id='app' class='hidden'>
+  <div id='boilerUI' class='panel hidden'>
+    <h2>BOILER UNIT</h2><div id='boilerLiquid'></div><div class='bar'><div id='boilerHp'></div></div><div id='boilerCap'></div><div id='boilerItems'></div>
+    <button id='boil'>BOIL DIRTY WATER</button><button id='closeBoiler'>CLOSE</button>
   </div>
-  <script src="app.js"></script>
-</body>
-</html>
+  <div id='storageUI' class='panel hidden'>
+    <h2>STORAGE TANK</h2><div id='storageLiquid'></div><div class='bar'><div id='storageHp'></div></div><div id='storageCap'></div><div id='storageItems'></div>
+    <button id='closeStorage'>CLOSE</button>
+  </div>
+</div><script src='app.js'></script></body></html>

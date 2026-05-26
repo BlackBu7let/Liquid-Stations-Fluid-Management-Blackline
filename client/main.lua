@@ -32,7 +32,7 @@ local function openTankUI(id)
     SetNuiFocus(true, true)
     SendNUIMessage({
         action='open', tankId=id, amount=tank.amount or 0.0, capacity=cfg.capacity or 1.0,
-        healthPct=((tank.health or 0) / (cfg.maxHealth or 100))*100, liquidType=tank.liquidType, items=getRelevantItems(tank.liquidType)
+        healthPct=((tank.health or 0) / (cfg.maxHealth or 100))*100, liquidType=tank.liquidType, uiType=cfg.uiType or 'storage', items=getRelevantItems(tank.liquidType)
     })
 end
 
@@ -93,7 +93,7 @@ CreateThread(function()
 end)
 
 RegisterCommand('placeliquidstation', function(_, args)
-    local tankType = args[1] or 'small_tank'
+    local tankType = args[1] or 'boiler_tank'
     if not lib.progressCircle({duration = Config.PROGRESS_INSTALL, label='Installing tank...'}) then return end
     lib.callback('liquid_stations:server:placeStation', false, function(res)
         if not res or not res.ok then return lib.notify({title='Liquid Stations', description=(res and res.err) or 'error', type='error'}) end
