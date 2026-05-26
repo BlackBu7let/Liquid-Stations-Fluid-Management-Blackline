@@ -17,3 +17,6 @@
 
 ['dirty_waterbottle'] = {label = 'Dirty Water Bottle', weight = 220, stack = true, close = false},
 ['jug_dirtywater'] = {label = 'Jug Dirty Water', weight = 520, stack = true, close = false},
+
+['coal'] = {label = 'Coal', weight = 300, stack = true, close = false},
+['charcoal'] = {label = 'Charcoal', weight = 250, stack = true, close = false},

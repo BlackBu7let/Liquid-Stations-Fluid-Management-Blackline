@@ -47,3 +47,9 @@ Copy images from `_INSTALL/images/` into your inventory image folder.
 - Added **2 different props/configs**: `boiler_tank` and `storage_tank`.
 - Added **2 different UIs** in NUI: Boiler UI (with boil button) and Storage UI (no boil).
 - Place with `/placeliquidstation [boiler_tank|storage_tank]`.
+
+
+## Boiling fuel requirement
+- Boiling dirty water now requires 1 configured burnable item.
+- Default allowed fuel items: `coal` or `charcoal` (configured in `Config.BurnableItems`).
+- You can add/remove burnable items in config and set per-item consume amounts.

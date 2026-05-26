@@ -9,6 +9,11 @@ Config.PROGRESS_INSTALL = 5000
 Config.ENABLE_DUI = true
 Config.BoilDurationMs = 8000
 
+Config.BurnableItems = {
+    coal = { remove = 1 },
+    charcoal = { remove = 1 },
+}
+
 Config.DELETE_OLD_DAYS = 10
 Config.DELETE_OPTIONS = { DeleteOnlyIfEmpty = true, DeleteOnlyIfBroken = false }
 Config.DecayTickMs = 60000

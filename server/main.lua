@@ -157,11 +157,26 @@ RegisterNetEvent('liquid_stations:server:boilTankWater', function(id)
     if t.liquidType ~= 'dirty_water' then return end
     local xPlayer = ESX.GetPlayerFromId(src); if not xPlayer then return end
 
+    local burnedItem = nil
+    for item, rules in pairs(Config.BurnableItems or {}) do
+        local need = (rules and rules.remove) or 1
+        if (exports.ox_inventory:GetItem(src, item, nil, true) or 0) >= need then
+            burnedItem = item
+            exports.ox_inventory:RemoveItem(src, item, need)
+            break
+        end
+    end
+
+    if not burnedItem then
+        TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = 'Need burnable item: coal or charcoal', type = 'error' })
+        return
+    end
+
     t.liquidType = 'water'
     t.updatedAt = nowUnix()
     persistTank(t)
     broadcast()
-    TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = 'Water boiled: now clean water', type = 'success' })
+    TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = ('Water boiled with %s'):format(burnedItem), type = 'success' })
 end)
 
 CreateThread(function()
