@@ -157,9 +157,19 @@ RegisterNetEvent('liquid_stations:server:boilTankWater', function(id)
     if t.liquidType ~= 'dirty_water' then return end
     local xPlayer = ESX.GetPlayerFromId(src); if not xPlayer then return end
 
+    local liters = tonumber(t.amount) or 0.0
+    if liters <= 0 then
+        TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = 'Tank is empty', type = 'error' })
+        return
+    end
+
+    local rate = tonumber(Config.BurnRatePerLiter) or 0.05
+    local requiredFuel = math.max(1, math.ceil(liters * rate))
+
     local burnedItem = nil
     for item, rules in pairs(Config.BurnableItems or {}) do
-        local need = (rules and rules.remove) or 1
+        local unitRemove = (rules and rules.remove) or 1
+        local need = requiredFuel * unitRemove
         if (exports.ox_inventory:GetItem(src, item, nil, true) or 0) >= need then
             burnedItem = item
             exports.ox_inventory:RemoveItem(src, item, need)
@@ -168,7 +178,7 @@ RegisterNetEvent('liquid_stations:server:boilTankWater', function(id)
     end
 
     if not burnedItem then
-        TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = 'Need burnable item: coal or charcoal', type = 'error' })
+        TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = ('Need more burnable fuel (%s units)'):format(requiredFuel), type = 'error' })
         return
     end
 
@@ -176,7 +186,7 @@ RegisterNetEvent('liquid_stations:server:boilTankWater', function(id)
     t.updatedAt = nowUnix()
     persistTank(t)
     broadcast()
-    TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = ('Water boiled with %s'):format(burnedItem), type = 'success' })
+    TriggerClientEvent('ox_lib:notify', src, { title = 'Tank System', description = ('Water boiled with %s x%s'):format(burnedItem, requiredFuel), type = 'success' })
 end)
 
 CreateThread(function()

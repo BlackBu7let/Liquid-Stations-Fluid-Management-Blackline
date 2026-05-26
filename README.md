@@ -53,3 +53,9 @@ Copy images from `_INSTALL/images/` into your inventory image folder.
 - Boiling dirty water now requires 1 configured burnable item.
 - Default allowed fuel items: `coal` or `charcoal` (configured in `Config.BurnableItems`).
 - You can add/remove burnable items in config and set per-item consume amounts.
+
+
+## Burn rate per liter (Config)
+- Added `Config.BurnRatePerLiter` to scale boil fuel cost with tank liters.
+- Formula: `requiredFuel = ceil(currentLiters * BurnRatePerLiter)` (minimum 1).
+- Example with default `0.05`: 20L requires 1 fuel item, 100L requires 5.
